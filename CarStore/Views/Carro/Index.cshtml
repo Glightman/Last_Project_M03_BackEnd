@@ -1,0 +1,26 @@
+﻿@model List<Carro>
+<h2>Carros Disponíveis</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (Carro c in Model)
+    {
+    <div class="card" style="width: 18rem;">
+        <img src="@Html.DisplayFor(Model => c.url)" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(Model => c.modelo)</h5>
+            <p class="card-text">@Html.DisplayFor(Model => c.descricao)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">@Html.DisplayFor(Model => c.marca)</li>
+            <li class="list-group-item">@Html.DisplayFor(Model => c.ano)</li>
+            <li class="list-group-item">@Html.DisplayFor(Model => c.preco)</li>
+        </ul>
+        <div class="card-body">
+            <a class="btn btn-outline-info" href="#" role="button">Atualizar</a>
+            <a class="btn btn-outline-danger" href="#" role="button">Deletar</a>
+        </div>
+    </div>
+    }
+</div>
+            
+                        
