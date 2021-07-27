@@ -358,3 +358,4 @@ C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Ca
 C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Create.cshtml.g.cs
 C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Index.cshtml.g.cs
 C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Sucess.cshtml.g.cs
+C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Read.cshtml.g.cs

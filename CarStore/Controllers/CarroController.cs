@@ -28,6 +28,12 @@ namespace CarStore.Controllers
             ViewBag.lista = carros;
             return View("Index");
         }
+
+        public IActionResult Read(int? id)
+        {
+            Carro carro = getCars().FirstOrDefault(c => c.id == id);
+            return View(carro);
+        }
         public IActionResult Sucesso()
         {
             return View();

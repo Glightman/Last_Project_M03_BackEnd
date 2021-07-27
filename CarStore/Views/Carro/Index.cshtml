@@ -17,8 +17,7 @@
             <li class="list-group-item">@Html.DisplayFor(Model => c.preco)</li>
         </ul>
         <div class="card-body">
-            <a class="btn btn-outline-info" href="#" role="button">Atualizar</a>
-            <a class="btn btn-outline-danger" href="#" role="button">Deletar</a>
+            <a class="btn btn-outline-info" asp-controller="Carro" asp-action="Read" asp-route-id="@c.id" role="button">Visualizar</a>
         </div>
     </div>
     }
