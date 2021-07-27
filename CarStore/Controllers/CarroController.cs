@@ -9,10 +9,10 @@ namespace CarStore.Controllers
 {
     public class CarroController : Controller
     {
-        public IActionResult Index(int id)
+        public IActionResult Index(int? id)
         {
-            List<Carro> carros = id == 0 ? getCars() : getCars().FindAll(x => x.id == id);
-            return View(carros);
+            ViewBag.lista = id == null ? getCars() : getCars().FindAll(x => x.id == id);
+            return View();
         }
         public IActionResult Create()
         {
