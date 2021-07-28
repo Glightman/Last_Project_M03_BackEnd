@@ -23,8 +23,8 @@ namespace CarStore.Models
         [Display(Name = "Ano - Modelo")]
         public int ano { get; set; }
 
-        [Display(Name = "Foto_URL")]
-        public string url { get; set; }
+        [Display(Name = "Foto_URL do carro")]
+        public string url1 { get; set; }
 
         [Display(Name = "Descrição")]
         public string descricao { get; set; }
