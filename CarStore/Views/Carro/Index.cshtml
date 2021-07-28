@@ -1,5 +1,6 @@
 ﻿@model List<Carro>
 <h2>Carros Disponíveis</h2>
+
 <a class="btn btn-primary" asp-area="" asp-controller="Carro" asp-action="Create" role="button">Cadastrar Novo Carro</a>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -12,9 +13,9 @@
             <p class="card-text">@Html.DisplayFor(Model => c.descricao)</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">@Html.DisplayFor(Model => c.marca)</li>
-            <li class="list-group-item">@Html.DisplayFor(Model => c.ano)</li>
-            <li class="list-group-item">@Html.DisplayFor(Model => c.preco)</li>
+            <li class="list-group-item"><b>Marca:  </b>@Html.DisplayFor(Model => c.marca)</li>
+            <li class="list-group-item"><b>Ano:  </b>@Html.DisplayFor(Model => c.ano)</li>
+            <li class="list-group-item"><b>Preço:  </b>@Html.DisplayFor(Model => c.preco)</li>
         </ul>
         <div class="card-body">
             <a class="btn btn-outline-info" asp-controller="Carro" asp-action="Read" asp-route-id="@c.id" role="button">Visualizar</a>
@@ -22,5 +23,5 @@
     </div>
     }
 </div>
-            
-                        
+
+<a class="btn btn-primary" asp-area="" asp-controller="Carro" asp-action="Create" role="button">Cadastrar Novo Carro</a>
