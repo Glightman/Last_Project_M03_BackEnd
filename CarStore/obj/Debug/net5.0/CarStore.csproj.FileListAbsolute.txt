@@ -359,5 +359,5 @@ C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Ra
 C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Index.cshtml.g.cs
 C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Sucess.cshtml.g.cs
 C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Read.cshtml.g.cs
-C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Delete.cshtml.g.cs
 C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Update.cshtml.g.cs
+C:\Users\Gabriel\Documents\Last_Project_M03_BackEnd\CarStore\obj\Debug\net5.0\Razor\Views\Carro\Confirm.cshtml.g.cs

@@ -9,10 +9,17 @@ namespace CarStore.Controllers
 {
     public class CarroController : Controller
     {
-        public IActionResult Index(int? id)
+        public IActionResult Index(string search, string ordena=null)
         {
-            ViewBag.lista = id == null ? getCars() : getCars().FindAll(x => x.id == id);
-            return View();
+            List<Carro> carro = getCars();
+            if (ordena == "sim")
+            {
+                carro = carro.OrderBy(c => c.preco).ToList();
+                ViewBag.ordenado = true;
+            }
+            return View(search == null? carro : 
+                carro.FindAll(c => c.marca.ToUpper().Contains(search.ToUpper())||
+            (c.modelo.ToUpper().Contains(search.ToUpper()))));
         }
         public IActionResult Create()
         {
@@ -35,13 +42,39 @@ namespace CarStore.Controllers
             return View(carro);
         }
 
+        [HttpGet]
         public IActionResult Update(int? id)
         {
-            return View();
+            Carro carro = getCars().FirstOrDefault(car => car.id == id);
+            return carro != null? View(carro) : RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Carro c)
+        {
+            List<Carro> carros = getCars();
+            Carro carro = carros.FirstOrDefault(car => car.id == c.id);
+            if (carro == null) return RedirectToAction("Index");
+            var indice = carros.IndexOf(carro);
+            carros[indice] = c;
+            return View("Index", carros);
+        }
+
+        public IActionResult Confirm(int? id)
+        {
+            Carro carro = getCars().FirstOrDefault(car => car.id == id);
+            return carro != null ? View(carro) : RedirectToAction("Index");
         }
         public IActionResult Delete(int? id)
         {
-            return View();
+            List<Carro> lista = getCars();
+            Carro carro = lista.FirstOrDefault(c => c.id == id);
+            if (carro != null)
+            {
+                lista.Remove(carro);
+                return View("Index", lista);
+            }
+            return carro == null ? NotFound() : View("Index");
         }
         public IActionResult Sucesso()
         {
