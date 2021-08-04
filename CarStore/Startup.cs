@@ -1,4 +1,5 @@
 using CarStore.Data;
+using CarStore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,8 +28,12 @@ namespace CarStore
         {
             services.AddControllersWithViews();
             services.AddDbContext<CarStoreContext>(options =>
-            options.UseSqlServer("Data Source=DESKTOP-O8VQM5N\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Database=CarStoreDb;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+            options.UseSqlServer(Configuration.GetConnectionString("CarStoreConection"))
             );
+
+            services.AddTransient<CarroSqlService>();
+            services.AddTransient<CarroStaticService>();
+            services.AddTransient<ICarroService, CarroSqlService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
