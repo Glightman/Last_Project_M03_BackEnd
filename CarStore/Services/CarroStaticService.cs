@@ -145,7 +145,7 @@ namespace CarStore.Services
                 return false;
             }
         }
-        public Carro get(int id)
+        public Carro get(int? id)
         {
             return getCars().FirstOrDefault(c => c.id == id);
         }
@@ -153,7 +153,7 @@ namespace CarStore.Services
         {
             return false;
         }
-        public bool delete(int id)
+        public bool delete(int? id)
         {
             return false;
         }

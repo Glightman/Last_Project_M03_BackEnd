@@ -9,8 +9,8 @@ namespace CarStore.Services
     public interface ICarroService
     {
         bool create(Carro carro);
-        bool delete(int id);
-        Carro get(int id);
+        bool delete(int? id);
+        Carro get(int? id);
         List<Carro> getAll(string busca = null, bool ord = false);
         bool update(Carro c);
     }

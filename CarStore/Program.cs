@@ -1,5 +1,9 @@
+using CarStore.Data;
+using CarStore.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +17,9 @@ namespace CarStore
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var app = CreateHostBuilder(args).Build();
+            SeedDatabase.Initialize(app);
+            app.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

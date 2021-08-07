@@ -11,18 +11,14 @@ namespace CarStore.Controllers
     public class CarroController : Controller
     {
         ICarroService service;
-        CarroSqlService SqlService;
-        CarroStaticService serviceStatic;
-        public CarroController(ICarroService service, CarroSqlService SqlService, CarroStaticService serviceStatic)
+        public CarroController(ICarroService service)
         {
             this.service = service;
-            this.SqlService = SqlService;
-            this.serviceStatic = serviceStatic;
         }
 
         public IActionResult Index(string busca, bool ordenar = false)
         {
-            return View(SqlService.getAll(busca, ordenar));
+            return View(service.getAll(busca, ordenar));
         }
 
         [HttpGet]
@@ -43,6 +39,45 @@ namespace CarStore.Controllers
                 return View(carro);
             }
 
+        }
+        public IActionResult Read (int? id)
+        {
+            Carro carro = service.get(id);
+            return carro != null ?
+                View(carro) :
+                RedirectToAction(nameof(Index));
+        }
+        public IActionResult Update(int? id)
+        {
+            Carro carro = service.get(id);
+            return carro != null ?
+                View(carro) :
+                RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult Update(Carro carro)
+        {
+            if (service.update(carro))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(carro);
+            }
+
+        }
+        public IActionResult Confirm(int? id)
+        {
+            if (service.delete(id))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

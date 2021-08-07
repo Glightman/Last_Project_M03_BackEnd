@@ -35,6 +35,8 @@ namespace CarStore.Services
 
             try
             {
+                context.Carro.Add(carro);
+                context.SaveChanges();
                 return true;
             }
             catch
@@ -42,17 +44,37 @@ namespace CarStore.Services
                 return false;
             }
         }
-        public Carro get(int id)
+        public Carro get(int? id)
         {
-            return new();
+            return context.Carro.Find(id);
         }
         public bool update(Carro c)
         {
-            return false;
+            try
+            {
+                context.Carro.Update(c);
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
-        public bool delete(int id)
+        public bool delete(int? id)
         {
-            return false;
+            try
+            {
+                context.Carro.Remove(get(id));
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+
         }
     }
 }
