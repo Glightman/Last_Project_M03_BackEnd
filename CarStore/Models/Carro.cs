@@ -11,18 +11,23 @@ namespace CarStore.Models
         [Display(Name = "#")]
         public int id { get; set; }
 
+        [Required(ErrorMessage = "Informe a marca do carro")]
         [Display(Name = "Marca")]
         public string marca { get; set; }
 
+        [Required(ErrorMessage = "Informe o modelo do carro")]
         [Display(Name = "Modelo")]
         public string modelo { get; set; }
 
+        [Required(ErrorMessage = "Informe o valor do carro")]
         [Display(Name = "Preço R$")]
         public double preco { get; set; }
-        
+
+        [Required(ErrorMessage = "Informe o ano do carro")]
         [Display(Name = "Ano - Modelo")]
         public int ano { get; set; }
 
+        [Required(ErrorMessage = "Informe o endeeço URL da imagem do carro")]
         [Display(Name = "Foto_URL do carro")]
         public string url1 { get; set; }
 

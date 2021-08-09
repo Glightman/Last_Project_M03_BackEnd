@@ -28,8 +28,11 @@ namespace CarStore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Carro carro)
         {
+            if (!ModelState.IsValid) return View(carro);
+
             if (service.create(carro))
             {
                 return RedirectToAction(nameof(Index));
@@ -56,8 +59,11 @@ namespace CarStore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update(Carro carro)
         {
+            if (!ModelState.IsValid) return View(carro);
+
             if (service.update(carro))
             {
                 return RedirectToAction(nameof(Index));
