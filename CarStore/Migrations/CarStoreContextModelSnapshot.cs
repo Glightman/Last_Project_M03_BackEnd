@@ -32,20 +32,66 @@ namespace CarStore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("marca")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("modelo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("preco")
                         .HasColumnType("float");
 
                     b.Property<string>("url1")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
                     b.ToTable("Carro");
+                });
+
+            modelBuilder.Entity("CarStore.Models.TesteDrive", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("carroid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("celular")
+                        .HasColumnType("int");
+
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("tipo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("carroid");
+
+                    b.ToTable("testeDrive");
+                });
+
+            modelBuilder.Entity("CarStore.Models.TesteDrive", b =>
+                {
+                    b.HasOne("CarStore.Models.Carro", "carro")
+                        .WithMany("testes")
+                        .HasForeignKey("carroid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("carro");
+                });
+
+            modelBuilder.Entity("CarStore.Models.Carro", b =>
+                {
+                    b.Navigation("testes");
                 });
 #pragma warning restore 612, 618
         }

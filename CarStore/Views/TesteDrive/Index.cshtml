@@ -1,0 +1,35 @@
+﻿@model List<TesteDrive>
+<h2>Agendamentos</h2>
+
+<div class="btn-group">
+    <a class="btn btn-primary" asp-action="Create" role="button">Agendar novo teste drive</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Negociação</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (TesteDrive t in Model)
+            {
+                <th scope="row">@Html.DisplayFor(Model => t.id)</th>
+                <td>@Html.DisplayFor(Model => t.nome)</td>
+                <td>@Html.DisplayFor(Model => t.celular)</td>
+                <td>@Html.DisplayFor(Model => t.tipo)</td>
+                <td>
+                    <a asp-action="Read" asp-route-id="@t.id" role="button" class="btn btn-primary">Visualizar</a>
+                    <a asp-action="Confirm" asp-route-id="@t.id" role="button" class="btn btn-danger">Excluir</a>
+                </td>
+            }
+        </tr>
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Create" role="button">Agendar novo teste drive</a>

@@ -1,0 +1,29 @@
+﻿@model TesteDrive
+
+<h2>Preencha os campos com os dados do agendamento</h2>
+<form class="col-md-4" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="nome" class="control-label"></label>
+        <input asp-for="nome" class="form-control" />
+        <span class="text-danger" asp-validation-for="nome"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="celular" class="control-label"></label>
+        <input asp-for="celular" class="form-control" />
+        <span class="text-danger" asp-validation-for="celular"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="tipo" class="control-label"></label>
+        <input asp-for="tipo" class="form-control" />
+        <span class="text-danger" asp-validation-for="tipo"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="carroid" class="control-label"></label>
+        <input asp-for="carroid" class="form-control" />
+        <span class="text-danger" asp-validation-for="carroid"></span>
+    </div>
+    <div class="col-12">
+        <input type="submit" class="btn btn-primary" value="Agendar!" />
+        <a class="btn btn-dark" asp-action="Index" role="button">Voltar</a>
+    </div>
+</form>

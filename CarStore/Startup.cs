@@ -34,6 +34,7 @@ namespace CarStore
             services.AddTransient<CarroSqlService>();
             services.AddTransient<CarroStaticService>();
             services.AddTransient<ICarroService, CarroSqlService>();
+            services.AddTransient<ITesteDriveService, TesteDriveSqlService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

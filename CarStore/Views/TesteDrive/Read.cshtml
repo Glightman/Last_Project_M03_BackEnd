@@ -1,0 +1,33 @@
+﻿@model TesteDrive
+
+<a class="btn btn-outline-info" asp-action="Index" role="button">Voltar</a>
+
+<div class="card">
+    <h5 class="card-header">Telefone: @Html.DisplayFor(Model => Model.celular)</h5>
+    <div class="card-body">
+        <h5 class="card-title">@Html.DisplayFor(Model => Model.nome)</h5>
+        <p class="card-text">Tipo de negociação: @Html.DisplayFor(Model => Model.tipo)</p>
+        <a class="btn btn-outline-info" asp-action="Update" asp-route-id="@Model.id" role="button">Atualizar</a>
+    </div>
+</div>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="bg-dark carousel-inner">
+        <div class="carousel-item active">
+            <img src="@Html.DisplayFor(Model => Model.carro.url1)" class="rounded mx-auto d-block w-25" alt="...">
+        </div>
+    </div>
+</div>
+
+<div class="card text-center">
+    <div class="card-header">
+        R$ @Html.DisplayFor(Model => Model.carro.preco),00
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Html.DisplayFor(Model => Model.carro.marca) - @Html.DisplayFor(Model => Model.carro.modelo)</h5>
+        <p class="card-text">@Html.DisplayFor(Model => Model.carro.descricao).</p>
+    </div>
+    <div class="card-footer text-muted">
+        @Html.DisplayFor(Model => Model.carro.ano)
+    </div>
+</div>

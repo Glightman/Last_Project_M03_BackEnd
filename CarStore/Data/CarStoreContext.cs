@@ -15,5 +15,6 @@ namespace CarStore.Data
         }
 
         public DbSet<Carro> Carro { get; set; }
+        public DbSet<TesteDrive> TesteDrive { get; set; }
     }
 }

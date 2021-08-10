@@ -33,5 +33,7 @@ namespace CarStore.Models
 
         [Display(Name = "Descrição")]
         public string descricao { get; set; }
+
+        public List<TesteDrive> testes { get; set; }
     }
 }
