@@ -1,13 +1,14 @@
 ﻿@model TesteDrive
 
-<a class="btn btn-outline-info" asp-action="Index" role="button">Voltar</a>
-
-<div class="card">
-    <h5 class="card-header">Telefone: @Html.DisplayFor(Model => Model.celular)</h5>
+<div class="card text-center">
+    <div class="card-header">
+        Usuário
+    </div>
     <div class="card-body">
         <h5 class="card-title">@Html.DisplayFor(Model => Model.nome)</h5>
-        <p class="card-text">Tipo de negociação: @Html.DisplayFor(Model => Model.tipo)</p>
+        <p class="card-text"><b>Telefone: </b>@Html.DisplayFor(Model => Model.celular) | <b>Tipo de negociação: </b>@Html.DisplayFor(Model => Model.tipo)</p>
         <a class="btn btn-outline-info" asp-action="Update" asp-route-id="@Model.id" role="button">Atualizar</a>
+        <a class="btn btn-outline-info" asp-action="Index" role="button">Voltar</a>
     </div>
 </div>
 

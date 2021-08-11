@@ -1,6 +1,7 @@
 ﻿using CarStore.Models;
 using CarStore.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace CarStore.Controllers
     public class TesteDriveController : Controller
     {
         ITesteDriveService service;
-        public TesteDriveController(ITesteDriveService service)
+        ICarroService carroService;
+        public TesteDriveController(ITesteDriveService service, ICarroService carroService)
         {
             this.service = service;
+            this.carroService = carroService;
         }
 
         public IActionResult Index()
@@ -24,6 +27,8 @@ namespace CarStore.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            var carros = carroService.getAll();
+            ViewBag.listaDeCarros = new SelectList(carros, "id", "modelo");
             return View();
         }
 
@@ -31,6 +36,9 @@ namespace CarStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(TesteDrive teste)
         {
+            var carros = carroService.getAll();
+            ViewBag.listaDeCarros = new SelectList(carros, "id", "modelo");
+
             if (!ModelState.IsValid) return View(teste);
 
             if (service.create(teste))
@@ -52,6 +60,8 @@ namespace CarStore.Controllers
         }
         public IActionResult Update(int? id)
         {
+            var carros = carroService.getAll();
+            ViewBag.listaDeCarros = new SelectList(carros, "id", "modelo");
             TesteDrive teste = service.get(id);
             return teste != null ?
                 View(teste) :
@@ -62,6 +72,8 @@ namespace CarStore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(TesteDrive teste)
         {
+            var carros = carroService.getAll();
+            ViewBag.listaDeCarros = new SelectList(carros, "id", "modelo");
             if (!ModelState.IsValid) return View(teste);
 
             if (service.update(teste))

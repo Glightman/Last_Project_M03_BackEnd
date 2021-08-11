@@ -1,5 +1,6 @@
 ﻿using CarStore.Data;
 using CarStore.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace CarStore.Services
         }
         public List<TesteDrive> getAll()
         {
-            return context.TesteDrive.ToList();
+            return context.TesteDrive.Include(t => t.carro).ToList();
         }
         public bool create(TesteDrive teste)
         {
@@ -34,7 +35,7 @@ namespace CarStore.Services
         }
         public TesteDrive get(int? id)
         {
-            return context.TesteDrive.Find(id);
+            return context.TesteDrive.Include(t => t.carro).FirstOrDefault(c => c.id == id);
         }
         public bool update(TesteDrive t)
         {
