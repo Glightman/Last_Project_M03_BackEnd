@@ -11,13 +11,19 @@ namespace CarStore.Controllers
     public class CarroController : Controller
     {
         ICarroService service;
-        public CarroController(ICarroService service)
+        CarroSqlService sqlService;
+        CarroStaticService staticService;
+        public CarroController(ICarroService service, CarroSqlService sqlService, CarroStaticService staticService)
         {
             this.service = service;
+            this.sqlService = sqlService;
+            this.staticService = staticService;
         }
 
-        public IActionResult Index(string busca, bool ordenar = false)
+        public IActionResult Index(string busca, string servico = "Serviço SQL", bool ordenar = false)
         {
+            if (servico == "Serviço Estático") this.service = staticService;
+            if (servico == "Serviço SQL") this.service = sqlService;
             return View(service.getAll(busca, ordenar));
         }
 

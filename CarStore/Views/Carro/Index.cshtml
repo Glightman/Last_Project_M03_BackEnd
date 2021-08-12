@@ -2,6 +2,10 @@
 <h2>Carros Disponíveis</h2>
 
 <form>
+    <select name="servico">
+        <option>Serviço Estático</option>
+        <option>Serviço SQL</option>
+    </select>
     <div class="input-group mb-3" style="width: 50%">
         <input type="text" name="busca" class="form-control" placeholder="Buscar" aria-label="Buscar ID" aria-describedby="button-addon2">
         <input type="submit" class="btn btn-outline-secondary" id="button-addon2" value="Buscar!" />
@@ -32,7 +36,13 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (Carro c in Model)
     {
-        var classe = c.testes.Count > 0 ? "text-success card-title" : "";
+        var classe = "";
+        if (c.testes != null)
+        {
+            var cond = c.testes.Count > 0 ? "text-success card-title" : "";
+            classe = cond;
+        }
+
         <div class="card" style="width: 18rem;">
             <img src="@Html.DisplayFor(Model => c.url1)" class="card-img-top" alt="...">
             <div class="card-body"> 
