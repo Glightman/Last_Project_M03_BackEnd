@@ -1,4 +1,6 @@
 ﻿@model List<Carro>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 <h2>Carros Disponíveis</h2>
 
 <form>
@@ -13,22 +15,26 @@
 </form>
 
 <div class="btn-group">
-    <a class="btn btn-primary" asp-area="" asp-controller="Carro" asp-action="Create" role="button">Cadastrar Novo Carro</a>
-   
+    @if (SignInManager.IsSignedIn(User))
+            {
+                <a class="btn btn-primary" asp-action="Create" role="button">Cadastrar Novo Carro</a>
+            }
+        
+
     @if (ViewBag.msg != "")
-        {
-            <div class="alert alert-success" role="alert">
+    {
+        <div class="alert alert-success" role="alert">
             @ViewBag.msg
-            </div>
-        }
+        </div>
+    }
     @if (ViewBag.ordenado == true)
-        {
-            <a class="btn btn-outline-info" asp-controller="Carro" asp-action="Index">Retornar Ordenação</a> 
-        }
+    {
+        <a class="btn btn-outline-info" asp-controller="Carro" asp-action="Index">Retornar Ordenação</a>
+    }
     else
-        { 
-            <a class="btn btn-outline-info" href="?ordena=sim">Ordenar por Preço</a>
-        }
+    {
+        <a class="btn btn-outline-info" href="?ordena=sim">Ordenar por Preço</a>
+    }
     <br /><br />
 </div>
 
@@ -40,12 +46,12 @@
         if (c.testes != null)
         {
             var cond = c.testes.Count > 0 ? "text-success card-title" : "";
-            classe = cond;
+            classe = cond; ;
         }
 
         <div class="card" style="width: 18rem;">
             <img src="@Html.DisplayFor(Model => c.url1)" class="card-img-top" alt="...">
-            <div class="card-body"> 
+            <div class="card-body">
                 <h5 class="@classe">@Html.DisplayFor(Model => c.modelo)</h5>
                 <p class="card-text">@Html.DisplayFor(Model => c.descricao)</p>
             </div>

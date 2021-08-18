@@ -3,6 +3,7 @@ using CarStore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,8 @@ namespace CarStore
             services.AddDbContext<CarStoreContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("CarStoreConection"))
             );
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<CarStoreContext>();
 
             services.AddTransient<CarroSqlService>();
             services.AddTransient<CarroStaticService>();
@@ -55,6 +58,7 @@ namespace CarStore
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -62,6 +66,7 @@ namespace CarStore
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

@@ -1,5 +1,6 @@
 ﻿using CarStore.Models;
 using CarStore.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace CarStore.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -35,6 +37,7 @@ namespace CarStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public IActionResult Create(Carro carro)
         {
             if (!ModelState.IsValid) return View(carro);
@@ -56,6 +59,8 @@ namespace CarStore.Controllers
                 View(carro) :
                 RedirectToAction(nameof(Index));
         }
+
+        [Authorize]
         public IActionResult Update(int? id)
         {
             Carro carro = service.get(id);
@@ -66,6 +71,7 @@ namespace CarStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public IActionResult Update(Carro carro)
         {
             if (!ModelState.IsValid) return View(carro);
@@ -80,6 +86,8 @@ namespace CarStore.Controllers
             }
 
         }
+
+        [Authorize]
         public IActionResult Confirm(int? id)
         {
             if (service.delete(id))

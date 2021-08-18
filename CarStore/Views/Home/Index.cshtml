@@ -1,8 +1,31 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    .borda{
+        border-radius: 30px;
+    }
+    .imagem {
+        background-image:  url(https://images4.alphacoders.com/105/1057695.jpg);
+    }
+</style>
+<body class="badge-dark">
+    <div class="container px-4">
+        <div class="row gx-5">
+            <div class="col">
+                <div class="borda border border-primary p-3 rounded-3 bg-light">
+                    <figure class="text-center">
+                        <blockquote class="blockquote">
+                            <p class="text-dark"><b>Busque aqui o carro que deseja!</b></p>
+                        </blockquote>
+                        <form class="align-items-center d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>

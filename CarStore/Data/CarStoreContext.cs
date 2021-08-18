@@ -1,4 +1,5 @@
 ﻿using CarStore.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarStore.Data
 {
-    public class CarStoreContext : DbContext
+    public class CarStoreContext : IdentityDbContext
     {
         public CarStoreContext(DbContextOptions<CarStoreContext> option) : base(option)
         { 
