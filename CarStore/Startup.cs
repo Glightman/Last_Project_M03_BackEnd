@@ -34,6 +34,12 @@ namespace CarStore
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<CarStoreContext>();
 
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
+
             services.AddTransient<CarroSqlService>();
             services.AddTransient<CarroStaticService>();
             services.AddTransient<ICarroService, CarroSqlService>();
