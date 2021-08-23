@@ -15,28 +15,20 @@
     </div>
 </form>
 
-<div class="btn-group">
+<div class="border-bottom btn-group">
     @if (SignInManager.IsSignedIn(User))
-            {
-                <a class="btn btn-primary" asp-action="Create" role="button">Cadastrar Novo Carro</a>
-            }
-        
-
-    @if (ViewBag.msg != "")
     {
-        <div class="alert alert-success" role="alert">
-            @ViewBag.msg
-        </div>
+        <a class="btn btn-primary" asp-action="Create" role="button">Cadastrar Novo Carro</a>
     }
+
     @if (ViewBag.ordenado == true)
     {
-        <a class="btn btn-outline-info" asp-controller="Carro" asp-action="Index">Retornar Ordenação</a>
+        <a class="btn btn-outline-info" asp-action="Index">Retornar Ordenação</a>
     }
     else
     {
         <a class="btn btn-outline-info" href="?ordena=sim">Ordenar por Preço</a>
     }
-    <br /><br />
 </div>
 
 
